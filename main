@@ -1,0 +1,41 @@
+def convert_length(value, source_unit, target_unit):
+    units = {
+        "mm": 0.001,
+        "cm": 0.01,
+        "m": 1,
+        "km": 1000,
+        "in": 0.0254,
+        "ft": 0.3048,
+        "yd": 0.9144,
+        "mi": 1609.34
+    }
+
+    if source_unit not in units or target_unit not in units:
+        return "无效的单位。"
+
+    source_value = value * units[source_unit]
+    target_value = source_value / units[target_unit]
+    return target_value
+
+print("单位转换器命令行工具")
+
+while True:
+    print("\n请选择操作：")
+    print("1. 进行单位转换")
+    print("2. 退出程序")
+
+    choice = input("请选择操作（输入数字）：")
+
+    if choice == '2':
+        print("谢谢使用，再见！")
+        break
+
+    if choice == '1':
+        value = float(input("请输入要转换的数值："))
+        source_unit = input("请输入源单位：")
+        target_unit = input("请输入目标单位：")
+
+        result = convert_length(value, source_unit, target_unit)
+        print("转换结果：", result)
+    else:
+        print("无效的选择，请重新输入。")
